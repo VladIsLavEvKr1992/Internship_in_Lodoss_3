@@ -1,14 +1,13 @@
 $(document).ready(function () { // does not wait for other items to load
 	
-	moveBishop("a3", "b4"); // a function that defines bishop move
+	const currentMoveBishop = moveBishop("a3", "b4"); // a function that defines bishop move
 
-	showResult(moveBishop("a3", "b4")); // a function that displays the results on the screen
+	showResult(currentMoveBishop); // a function that displays the results on the screen
 		
 });
 
 
 function moveBishop(currentPosition, supposedPosition) {
-
 	var currentPositionX = currentPosition[0]; // a bishop current position on X axis
 	var currentPositionY = currentPosition[1]; // a bishop current position on Y axis
 
@@ -24,17 +23,9 @@ function moveBishop(currentPosition, supposedPosition) {
 	coordinateDifferenceY = 
 		supposedPositionY.charCodeAt() - currentPositionY.charCodeAt(); // string to ASCII code
 
-
-		// the absolute value (module) of a number
-		if (Math.abs(coordinateDifferenceX) == Math.abs(coordinateDifferenceY)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-
-console.log(moveBishop("a3", "b4")); // to check what the function returns
+	// the absolute value (module) of a number
+	return Math.abs(coordinateDifferenceX) == Math.abs(coordinateDifferenceY);
+}
 
 
 function showResult(currentResult) {
@@ -46,3 +37,5 @@ function showResult(currentResult) {
 		$('.answer-gotten').text(`unexpected type!!!`);
 	}
 }
+
+console.log(moveBishop("a3", "b4"));
